@@ -1,7 +1,7 @@
 function renderPlainText(data) {
     let result = `Statement for ${data.customer}\n`;
     for (let perf of data.performances) {
-        result += `  ${playFor(perf).name}: ${usd(amountFor(perf) / 100)} (${perf.audience} seats)\n`;
+        result += `  ${perf.play.name}: ${usd(perf.amount / 100)} (${perf.audience} seats)\n`;
     }
     result += `Amount owed is ${usd(totalAmount() / 100)}\n`;
     result += `You earned ${totalVolumeCredits()} credits\n`;
@@ -10,7 +10,7 @@ function renderPlainText(data) {
 
 export function statement(invoice, plays) {
     const statementData = {
-        customer: invoice.customer, performances: invoice.performances
+        customer: invoice.customer, performances: invoice.performances.map(enrichPerformance)
     };
     return renderPlainText(statementData, invoice, plays);
 
@@ -67,6 +67,13 @@ export function statement(invoice, plays) {
             // print line for this order
             result += amountFor(perf);
         }
+        return result;
+    }
+
+    function enrichPerformance(aPerformance) {
+        const result = Object.assign({}, aPerformance);
+        result.play = playFor(result);
+        result.amount = amountFor(result);
         return result;
     }
 }
