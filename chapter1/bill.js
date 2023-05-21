@@ -8,12 +8,12 @@ function renderPlainText(data) {
     result += `Amount owed is ${usd(data.totalAmount / 100)}\n`;
     result += `You earned ${data.totalVolumeCredits} credits\n`;
     return result;
+}
 
-    function usd(aNumber) {
-        return new Intl.NumberFormat("en-US", {
-            style: "currency", currency: "USD", minimumFractionDigits: 2
-        }).format(aNumber);
-    }
+function usd(aNumber) {
+    return new Intl.NumberFormat("en-US", {
+        style: "currency", currency: "USD", minimumFractionDigits: 2
+    }).format(aNumber);
 }
 
 function renderHtml(data) {
@@ -34,6 +34,6 @@ export function statement(invoice, plays) {
     return renderPlainText(createStatementData(invoice, plays));
 }
 
-function htmlStatement(invoice, plays) {
+export function htmlStatement(invoice, plays) {
     return renderHtml(createStatementData(invoice, plays));
 }
