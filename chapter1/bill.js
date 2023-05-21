@@ -56,20 +56,11 @@ export function statement(invoice, plays) {
     }
 
     function totalVolumeCredits() {
-        let result = 0;
-        for (let perf of invoice.performances) {
-            result += volumeCreditsFor(perf);
-        }
-        return result;
+        return invoice.performances.reduce((total, p) => total + p.volumeCredits, 0);
     }
 
     function totalAmount() {
-        let result = 0;
-        for (let perf of invoice.performances) {
-            // print line for this order
-            result += amountFor(perf);
-        }
-        return result;
+        return invoice.performances.reduce((total, p) => total + p.amount, 0);
     }
 
     function enrichPerformance(aPerformance) {
