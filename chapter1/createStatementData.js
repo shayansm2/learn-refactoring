@@ -1,10 +1,10 @@
 export function createStatementData(invoice, plays) {
-    const statementData = {
+    const result = {
         customer: invoice.customer, performances: invoice.performances.map(enrichPerformance)
     };
-    statementData.totalAmount = totalAmount(statementData);
-    statementData.totalVolumeCredits = totalVolumeCredits(statementData);
-    return statementData;
+    result.totalAmount = totalAmount(result);
+    result.totalVolumeCredits = totalVolumeCredits(result);
+    return result;
 
     function playFor(aPerformance) {
         return plays[aPerformance.playID];
