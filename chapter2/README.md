@@ -15,16 +15,16 @@ Four Reasons to Change Software
 3. Improving the design
 4. Optimizing resource usage
 
-|                   | Adding a Feature | Fixing a Bug | Refactoring | Optimizing |
-|-------------------|------------------|--------------|-------------|------------|
-| Structure         | Changes          | Changes      | Changes     |            |
-| New Functionality | Changes          |              |             |            |
-| Functionality     |                  | Changes      |             |            |
-| Resource Usage    |                  |              |             | Changes    |
+|                   | Adding a Feature | Fixing a Bug | Refactoring | Optimizing |  
+|-------------------|------------------|--------------|-------------|------------|  
+| Structure         | Changes          | Changes      | Changes     |            |  
+| New Functionality | Changes          |              |             |            |  
+| Functionality     |                  | Changes      |             |            |  
+| Resource Usage    |                  |              |             | Changes    |  
 
-**Refactoring is very similar to performance optimization**, as both involve carrying out code manipulations that *
-*don’t change the overall functionality** of the program. **The difference is the purpose: Refactoring is always done to
-make the code “easier to understand and cheaper to modify.” This might speed things up or slow things down.** With
+**Refactoring is very similar to performance optimization**, as both involve carrying out code manipulations that
+**don’t change the overall functionality** of the program. **The difference is the purpose: Refactoring is always done
+to make the code “easier to understand and cheaper to modify.” This might speed things up or slow things down.** With
 performance optimization, I only care about speeding up the program, and am prepared to end up with code that is harder
 to work with if I really need that improved performance.
 
@@ -59,7 +59,7 @@ future work easier. This is an important point that’s frequently missed. Refac
 from programming—any more than you set aside time to write if statements. I don’t put time on my plans to do
 refactoring; most refactoring happens while I’m doing other things.
 
-### 2 hats method (refactoring while you add feature or fix the buf)
+### 2 hats method (refactoring while you add feature or fix the bug)
 
 My experience is that refactoring is a big aid to building software quickly. If I need to add a new function and the
 design does not suit the change, I find it’s quicker to refactor first and then add the function. If I need to fix a
@@ -91,7 +91,7 @@ features. But such planned refactoring episodes should be rare.
 1. If I run across code that is a mess, but I don’t need to modify it, then I don’t need to refactor it. Some ugly code
    that I can treat as an API may remain ugly. It’s only when I need to understand how it works that refactoring gives
    me any benefit.
-2. when rewrite ir more logical than refactoring
+2. when rewrite is more logical than refactoring
 
 ## self-testing code, continuous integration and refactoring
 
@@ -104,7 +104,7 @@ refactoring carries too much risk of introducing bugs. Without self-testing code
 
 Legacy code is often complex, frequently comes with poor tests, and, above all, is written by Someone Else (shudder).
 These tests must be self-checking. Refactoring can be a fantastic tool to help understand a legacy system. Functions
-with misleading names can be renamed, so they make sense. However, if you have a big legacy system with no tests, you
+with misleading names can be renamed, so they make sense. However, if you have a big legacy system with no tests, you  
 can’t safely refactor it into clarity. If all this sounds difficult, that’s because it is. Sadly, there’s no shortcut to
 getting out of a hole this deep—which is why I’m such a strong proponent of writing self-testing code from the start.
 
@@ -112,9 +112,10 @@ getting out of a hole this deep—which is why I’m such a strong proponent of 
 
 Many people, therefore, argue for keeping feature branches short—perhaps just a couple of days. Others, such as me, want
 them even shorter than that. This is an approach called Continuous Integration (CI), also known as Trunk-Based
-Development. With CI, each team member integrates with mainline at least once per day. Feature branches may be the right
-technique for open source projects where you have infrequent commits from programmers who you don’t know well (and thus
-don’t trust). But in a full-time development team, the cost that feature branches impose on refactoring is excessive
+Development. With CI, each team member integrates with mainline at least once per day. Feature branches may be the
+right technique for open source projects where you have infrequent commits from programmers who you don’t know well (and
+thus don’t trust). But in a full-time development team, the cost that feature branches impose on refactoring is
+excessive
 
 ## refactoring in a code review
 
