@@ -1,3 +1,11 @@
+## the purpose of refactoring
+
+people get trapped on when they try to justify refactoring in terms of “clean code,” “good engineering practice,” or
+similar moral reasons. The point of refactoring isn’t to show how sparkly a code base is—it is purely economic. We
+refactor because it makes us faster—faster to add features, faster to fix bugs.
+
+> **The whole purpose of refactoring is to make us program faster, producing more value with less effort.**
+
 ## Refactoring VS Performance optimization
 
 Four Reasons to Change Software
@@ -13,8 +21,6 @@ Four Reasons to Change Software
 | New Functionality | Changes          |              |             |            |
 | Functionality     |                  | Changes      |             |            |
 | Resource Usage    |                  |              |             | Changes    |
-
-###### src: chapter 1 of Working Effectively with Legacy Code
 
 **Refactoring is very similar to performance optimization**, as both involve carrying out code manipulations that *
 *don’t change the overall functionality** of the program. **The difference is the purpose: Refactoring is always done to
@@ -53,7 +59,11 @@ future work easier. This is an important point that’s frequently missed. Refac
 from programming—any more than you set aside time to write if statements. I don’t put time on my plans to do
 refactoring; most refactoring happens while I’m doing other things.
 
-### 2 hats
+### 2 hats method (refactoring while you add feature or fix the buf)
+
+My experience is that refactoring is a big aid to building software quickly. If I need to add a new function and the
+design does not suit the change, I find it’s quicker to refactor first and then add the function. If I need to fix a
+bug, I need to understand how the software works—and I find refactoring is the fastest way to do this.
 
 As I develop software, I find myself swapping hats frequently. I start by trying to add a new capability, then I realize
 this would be much easier if the code were structured differently. So I swap hats and refactor for a while. Once the
@@ -65,10 +75,23 @@ program.
 One bit of advice I’ve heard is to separate refactoring work and new feature additions into different version-control
 commits
 
+### continues refactoring
+
+Often, a useful strategy is to agree to gradually work on the problem over the course of the next few weeks. Whenever
+anyone goes near any code that’s in the refactoring zone, they move it a little way in the direction they want to
+improve.
+
 ### planned refactoring
 
 If a team has neglected refactoring, it often needs dedicated time to get their code base into a better state for new
 features. But such planned refactoring episodes should be rare.
+
+## when should we not refactor
+
+1. If I run across code that is a mess, but I don’t need to modify it, then I don’t need to refactor it. Some ugly code
+   that I can treat as an API may remain ugly. It’s only when I need to understand how it works that refactoring gives
+   me any benefit.
+2. when rewrite ir more logical than refactoring
 
 ## self-testing code, continuous integration and refactoring
 
@@ -76,11 +99,8 @@ there is a strong synergy between the three practices of self-testing code, cont
 
 ### self-testing code
 
-Before you start refactoring, make sure you have a solid suite of tests. These tests must be self-checking.
-
-###### src: chapter 1 of Refactoring
-
-Before you start refactoring, make sure you have a solid suite of tests.
+Before you start refactoring, make sure you have a solid suite of tests. These tests must be self-checking. why?
+refactoring carries too much risk of introducing bugs. Without self-testing code, that’s a reasonable worry.
 
 Legacy code is often complex, frequently comes with poor tests, and, above all, is written by Someone Else (shudder).
 These tests must be self-checking. Refactoring can be a fantastic tool to help understand a legacy system. Functions
@@ -96,4 +116,15 @@ Development. With CI, each team member integrates with mainline at least once pe
 technique for open source projects where you have infrequent commits from programmers who you don’t know well (and thus
 don’t trust). But in a full-time development team, the cost that feature branches impose on refactoring is excessive
 
-###### src: chapter 2 of Refactoring
+## refactoring in a code review
+
+it’s hard for people to put themselves in the shoes of someone unfamiliar with whatever they are working on. The common
+pull request model, where a reviewer looks at code without the original author, doesn’t work too well. It’s better to
+have the original author of the code present because the author can provide context on the code and fully appreciate the
+reviewers’ intentions for their changes. I’ve had my best experiences with this by sitting one-on-one with the original
+author, going through the code and refactoring as we go (pair programming).
+
+### sources
+
+1. chapter 1 and 2 of Refactoring book
+2. chapter 1 of Working Effectively with Legacy Code
