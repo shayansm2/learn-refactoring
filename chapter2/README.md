@@ -1,4 +1,4 @@
-> chapter 1 of Working Effectively with Legacy Code
+## Refactoring VS Performance optimization
 
 Four Reasons to Change Software
 
@@ -14,9 +14,7 @@ Four Reasons to Change Software
 | Functionality     |                  | Changes      |             |            |
 | Resource Usage    |                  |              |             | Changes    |
 
-> chapter 2 of Refactoring
-
-### Refactoring VS Performance optimization
+###### src: chapter 1 of Working Effectively with Legacy Code
 
 **Refactoring is very similar to performance optimization**, as both involve carrying out code manipulations that *
 *don’t change the overall functionality** of the program. **The difference is the purpose: Refactoring is always done to
@@ -24,7 +22,7 @@ make the code “easier to understand and cheaper to modify.” This might speed
 performance optimization, I only care about speeding up the program, and am prepared to end up with code that is harder
 to work with if I really need that improved performance.
 
-### Why Should We Refactor?
+## Why Should We Refactor?
 
 1. Refactoring Improves the Design of Software
 
@@ -36,7 +34,7 @@ to work with if I really need that improved performance.
 
 ![img.png](img.png)
 
-### When Should We Refactor?
+## When Should We Refactor?
 
 The best time to refactor is just before I need to add a new feature to the code base.
 
@@ -64,11 +62,23 @@ I coded it in a way that’s awkward to understand, so I swap hats again and ref
 minutes, but during this time I’m always aware of which hat I’m wearing and the subtle difference that makes to how I
 program.
 
-### self-testing code, continuous integration and refactoring
+One bit of advice I’ve heard is to separate refactoring work and new feature additions into different version-control
+commits
+
+### planned refactoring
+
+If a team has neglected refactoring, it often needs dedicated time to get their code base into a better state for new
+features. But such planned refactoring episodes should be rare.
+
+## self-testing code, continuous integration and refactoring
 
 there is a strong synergy between the three practices of self-testing code, continuous integration, and refactoring.
 
-#### self-testing code
+### self-testing code
+
+Before you start refactoring, make sure you have a solid suite of tests. These tests must be self-checking.
+
+###### src: chapter 1 of Refactoring
 
 Before you start refactoring, make sure you have a solid suite of tests.
 
@@ -78,10 +88,12 @@ with misleading names can be renamed, so they make sense. However, if you have a
 can’t safely refactor it into clarity. If all this sounds difficult, that’s because it is. Sadly, there’s no shortcut to
 getting out of a hole this deep—which is why I’m such a strong proponent of writing self-testing code from the start.
 
-#### continuous integration
+### continuous integration
 
 Many people, therefore, argue for keeping feature branches short—perhaps just a couple of days. Others, such as me, want
 them even shorter than that. This is an approach called Continuous Integration (CI), also known as Trunk-Based
 Development. With CI, each team member integrates with mainline at least once per day. Feature branches may be the right
 technique for open source projects where you have infrequent commits from programmers who you don’t know well (and thus
 don’t trust). But in a full-time development team, the cost that feature branches impose on refactoring is excessive
+
+###### src: chapter 2 of Refactoring
